@@ -10,14 +10,16 @@ project reads a GPX file and outputs statistics and plots.
   - [ ] 3D animated path
   - [ ] 2D map of the region with path
 - Statistics
-  - [ ] total distance
-  - [ ] max/avg speed
-  - [ ] duration of the hike
+  - [x] total distance and hike duration
+  - [x] max/avg speed
+  - [x] duration of the hike
   - [ ] duration of only the moving parts
   - [ ] total uphill/downhill
   - [ ] calories burned
   - [ ] dehydration
   - [ ] coordinates of the highest/lowest points
+
+## Installation
 
 ## Usage
 
@@ -31,6 +33,5 @@ There are several ways to contribute to this project:
 - Documentation improvements
 - Bug reports and ideas for new features (via Github Issues)
 - New features
-
 
 ## License
