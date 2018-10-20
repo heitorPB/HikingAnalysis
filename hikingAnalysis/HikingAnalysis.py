@@ -1,9 +1,11 @@
 import gpxpy
 import matplotlib.pyplot as plt
-from mpl_toolkits.basemap import Basemap
 import matplotlib.patheffects as PathEffects
-from matplotlib.patches import Ellipse
 import geotiler
+from matplotlib import animation
+from matplotlib.patches import Ellipse
+from mpl_toolkits.basemap import Basemap
+from mpl_toolkits.mplot3d import Axes3D
 
 
 class HikingAnalysis(object):
@@ -64,8 +66,39 @@ class HikingAnalysis(object):
         x, y = myMap(lon, lat)  # map (long, lat) to (x,y) coordinates in plot
         ax.scatter(x, y, c=index, s=4, cmap='brg')
 
+        print("Printing map in", self._out_dir+'/map.png')
         plt.savefig(self._out_dir+'/map.png', quality=100, bbox_inches='tight')
         plt.close()
 
     def plot3D(self):
-        print("plot3D: implement me :)")
+        points = self._gpx.get_points_data()
+        gps_long = [p[0].longitude for p in points]
+        gps_lat = [p[0].latitude for p in points]
+        gps_elevation = [p[0].elevation for p in points]
+
+        fig = plt.figure()
+        ax = fig.add_subplot(111, projection='3d')
+
+        def init():
+            N = len(gps_lat)
+            for i in range(N - 1):
+                ax.plot(gps_long[i:i + 2],           # x coordinate
+                        gps_lat[i:i + 2],            # y,
+                        gps_elevation[i:i + 2],      # z
+                        color=plt.cm.viridis(i / N)) # sequential color
+
+            ax.set_xlabel("longitude")
+            ax.set_ylabel("latitude")
+            ax.set_zlabel("altitude (meters)")
+
+            return fig,
+
+
+        def animate(i):
+            ax.view_init(elev=10., azim=i)
+            return fig,
+
+        print("Saving animation in", self._out_dir+'/animation.mp4')
+        anim = animation.FuncAnimation(fig, animate, init_func=init,
+                                       frames=360, interval=20, blit=True)
+        anim.save(self._out_dir+'/animation.mp4', fps=30, extra_args=['-vcodec', 'libx264'])
