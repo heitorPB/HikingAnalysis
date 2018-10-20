@@ -82,17 +82,16 @@ class HikingAnalysis(object):
         def init():
             N = len(gps_lat)
             for i in range(N - 1):
-                ax.plot(gps_long[i:i + 2],           # x coordinate
-                        gps_lat[i:i + 2],            # y,
-                        gps_elevation[i:i + 2],      # z
-                        color=plt.cm.viridis(i / N)) # sequential color
+                ax.plot(gps_long[i:i + 2],       # x coordinate
+                        gps_lat[i:i + 2],        # y,
+                        gps_elevation[i:i + 2],  # z
+                        color=plt.cm.viridis(i / N))  # sequential color
 
             ax.set_xlabel("longitude")
             ax.set_ylabel("latitude")
             ax.set_zlabel("altitude (meters)")
 
             return fig,
-
 
         def animate(i):
             ax.view_init(elev=10., azim=i)
@@ -101,4 +100,5 @@ class HikingAnalysis(object):
         print("Saving animation in", self._out_dir+'/animation.mp4')
         anim = animation.FuncAnimation(fig, animate, init_func=init,
                                        frames=360, interval=20, blit=True)
-        anim.save(self._out_dir+'/animation.mp4', fps=30, extra_args=['-vcodec', 'libx264'])
+        anim.save(self._out_dir+'/animation.mp4', fps=30,
+                  extra_args=['-vcodec', 'libx264'])

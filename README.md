@@ -7,7 +7,7 @@ project reads a GPX file and outputs statistics and plots.
 
 - Plots
   - [ ] 3D path
-  - [ ] 3D animated path
+  - [x] 3D animated path
   - [x] 2D map of the region with path
 - Statistics
   - [x] total distance and hike duration
@@ -41,5 +41,10 @@ There are several ways to contribute to this project:
 - Documentation improvements
 - Bug reports and ideas for new features (via Github Issues)
 - New features
+
+## TODO
+
+- get rid of all those debug output
+- add option to change output filenames
 
 ## License
