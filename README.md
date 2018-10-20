@@ -8,7 +8,7 @@ project reads a GPX file and outputs statistics and plots.
 - Plots
   - [ ] 3D path
   - [ ] 3D animated path
-  - [ ] 2D map of the region with path
+  - [x] 2D map of the region with path
 - Statistics
   - [x] total distance and hike duration
   - [x] max/avg speed
@@ -20,6 +20,14 @@ project reads a GPX file and outputs statistics and plots.
   - [ ] coordinates of the highest/lowest points
 
 ## Installation
+
+This project uses Python 3 and some libraries. Install the depencies first (it
+might take a while):
+
+```
+pip install --user git+https://github.com/jswhit/pyproj.git
+pip install --user git+https://github.com/matplotlib/basemap.git
+```
 
 ## Usage
 

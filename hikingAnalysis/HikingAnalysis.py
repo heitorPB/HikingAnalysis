@@ -56,7 +56,7 @@ class HikingAnalysis(object):
         myMap.imshow(img, interpolation='lanczos', origin='upper')
 
         # plot hike
-        points = gpx.get_points_data()
+        points = self._gpx.get_points_data()
         lon = [p[0].longitude for p in points]
         lat = [p[0].latitude for p in points]
         index = [p.point_no for p in points]  # color sequentially each point
@@ -64,8 +64,8 @@ class HikingAnalysis(object):
         x, y = myMap(lon, lat)  # map (long, lat) to (x,y) coordinates in plot
         ax.scatter(x, y, c=index, s=4, cmap='brg')
 
-        plt.savefig(self._out_dir+'map.png', quality=100, bbox_inches='tight')
+        plt.savefig(self._out_dir+'/map.png', quality=100, bbox_inches='tight')
         plt.close()
 
     def plot3D(self):
-        print("# implement me :)")
+        print("plot3D: implement me :)")
