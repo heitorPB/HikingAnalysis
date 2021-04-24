@@ -1,6 +1,6 @@
 # Hiking Analysis
 
-When a physicist goes hiking, (s)he expects some statistics and plots. This
+When a physicist goes hiking, they expect some statistics and plots. This
 project reads a GPX file and outputs statistics and plots.
 
 ## Features
@@ -25,8 +25,11 @@ This project uses Python 3 and some libraries. Install the depencies first (it
 might take a while):
 
 ```
+pip install --user cython
 pip install --user git+https://github.com/jswhit/pyproj.git
+pip install --user gpxpy
 pip install --user git+https://github.com/matplotlib/basemap.git
+pip install --user geotiler
 ```
 
 ## Usage
@@ -46,5 +49,9 @@ There are several ways to contribute to this project:
 
 - get rid of all those debug output
 - add option to change output filenames
+- improve numbers in statistics:
+  - too many decimal digits
+  - also output duration in hh:mm:ss
+- license
 
 ## License
